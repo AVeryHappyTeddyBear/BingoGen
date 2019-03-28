@@ -22,20 +22,17 @@ def BingoStitcher(): #Actually creates the bingo sheets
         print("Creating Bingo Sheet {}".format(i+1))
         bsheet = Image.new('RGB',(502,702), color='white')
         ImageDraw.Draw(bsheet).rectangle([(0,150),(501,651)], fill=None, outline='black') #Add the border to the overall sheet
-        #Adding all the text in a really uncompact way
-        headerFont = ImageFont.truetype("arial.ttf", 70) #Header font
-        teamFont = ImageFont.truetype("arial.ttf", 20) #Team number font
-        plugFont = ImageFont.truetype("arial.ttf", 14) #Shameless plug font
-        w, h = ImageDraw.Draw(bsheet).textsize('Bingo!', font=headerFont) #Finding the center for the text
-        ImageDraw.Draw(bsheet).text(((502-w)/2, 24), 'Bingo!', font=headerFont, fill='black') #Adding the header text
-        if teamNum != 0: #Check if a team number was entered
-            teamNumText = "From Team #{}".format(teamNum)
-            w, h = ImageDraw.Draw(bsheet).textsize(teamNumText, font=teamFont) #Finding the center for the text
-            ImageDraw.Draw(bsheet).text(((502-w)/2, 110), teamNumText, font=teamFont, fill='black') #Adding the team number text
-        plugText = 'https://git.io/fjTqM' #Shameless plug for the bottom of the sheet
-        w, h = ImageDraw.Draw(bsheet).textsize(plugText, font=plugFont) #Finding the center for the text
-        ImageDraw.Draw(bsheet).text(((502-w)/2, 670), plugText, font=plugFont, fill='black') #Adding the plug text
-        #The text wall is finally over
+        for line in range(3): #This loop just handles all the heading text on the sheet
+            print(line)
+            if line == 1 and teamNum == 0: #If no number entered, skip
+                pass
+            else:
+                fontSize = [70,20,14]
+                textCont = ['Bingo!','From Team #{}'.format(teamNum),'https://git.io/fjTqM']
+                textHeight = [24,110,670]
+                univFont = ImageFont.truetype("arial.ttf", fontSize[line])
+                w, h = ImageDraw.Draw(bsheet).textsize(textCont[line], font=univFont)
+                ImageDraw.Draw(bsheet).text(((502-w)/2, textHeight[line]), textCont[line], font=univFont, fill='black')
         rantiles = random.sample(range(1,terms), 24) #Pick 24 random tiles to use
         rantiles.insert(12,"free")
         #print(rantiles) DEBUG
