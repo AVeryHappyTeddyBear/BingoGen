@@ -1,5 +1,3 @@
 INSTRUCTIONS!
 
-I would HIGHLY recommend keeping the python file inside the folder it comes in (It also needs to stay in a folder with the 'term_free' image). When you use this script it will fill the folder with images of all of the tiles it generates and the finalized Bingo Boards. Also, when you generate a set of terms the images of those individual terms are never deleted by the script, they are simply overwritten when you create a new set. For this reason, you need to delete those term images (Besides 'term_free' of course) if your new set of terms is shorter than the previous.
-That's basically it. Good luck.
-
+I would HIGHLY recommend keeping the python file inside the folder it comes in. Since the major overhaul the "term_free" image is no longer needed and the script will no longer fill whatever folder it's in with all of the individual tile images. The only files the script will create now will be the finished bingo boards and a single text document containing your list of terms. All the steps to make the script function should be pretty self explanatory by all the messages inside in the script itself. Have fun and Goodluck.
